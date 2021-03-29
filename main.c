@@ -4,9 +4,12 @@
 *   Matéria: Projeto e Análise de Algoritmos
 *   Professor: Daniel Mendes Barbosa
 */
+
 #include <stdlib.h>
 #include <stdio.h>
 #include "./Headers/labirinto.h"
+#include "./Headers/auxiliares.h"
+
 //gcc -o exec main.c ./Headers/labirinto.h ./Sources/labirinto.c
 //Como rodar o makefile no windows mingw32-make <enter>  exec <enter>
 

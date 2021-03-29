@@ -1,3 +1,10 @@
+/*
+*   Programa: PROBLEMA DO LABIRINTO
+*   Autor: Roniel Nunes Barbosa e Victor Hugo Santos
+*   Matéria: Projeto e Análise de Algoritmos
+*   Professor: Daniel Mendes Barbosa
+*/
+
 #include "../Headers/labirinto.h"
 #include <malloc.h>
 

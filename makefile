@@ -1,4 +1,4 @@
 compile:
-		gcc -o exec main.c ./Headers/labirinto.h ./Sources/labirinto.c
+		gcc -o exec main.c ./Sources/labirinto.c
 run:
 		./exec

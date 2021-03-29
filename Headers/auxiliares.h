@@ -5,15 +5,16 @@
 *   Professor: Daniel Mendes Barbosa
 */
 
-#ifndef LABIRINTO_H
-#define LABIRINTO_H
+// ================ header de funcoes auxiliares ================
 
-//Estrutura??
-
-typedef int ** Labirinto;
+#ifndef AUXILIARES_H
+#define AUXILIARES_H
 
 // ================ declaracao de funcoes ================
 
-Labirinto inicializaLabirinto(int linha, int coluna);
+void linha ();
+void textoInicial ();
+int escolhaUsuario ();
+
 
 #endif
