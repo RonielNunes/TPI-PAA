@@ -1,4 +1,5 @@
 #include "../Headers/labirinto.h"
+#include <malloc.h>
 
 Labirinto inicializaLabirinto(int linha, int coluna){
     int **labirintoExterno;
