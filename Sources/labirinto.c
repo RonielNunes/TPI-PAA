@@ -9,7 +9,8 @@
 
 
 Labirinto inicializaLabirinto(int linha, int coluna){
-    int **labirintoExterno;
+    Labirinto labirintoExterno;
+    
     labirintoExterno = (int**)calloc((linha+1),sizeof(int*));
     for (int i = 0; i < linha; i++)
     {
