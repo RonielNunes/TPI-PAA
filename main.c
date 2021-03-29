@@ -6,10 +6,28 @@
 */
 #include <stdlib.h>
 #include <stdio.h>
-
-
+#include "../Headers/labirinto.h"
+//gcc -o exec main.c ./Headers/labirinto.h ./Sources/labirinto.c 
 int main(int argc, char const *argv[])
 {
     /* code */
+    Labirinto labirinto;
+    int linha = 10;
+    int coluna = 10;
+
+    labirinto = inicializaLabirinto(linha,coluna);
+
+
+    for (int i = 0; i < linha; i++)
+    {
+        for (int j = 0 < coluna;j++)
+        {
+            labirinto[i][j] = 1;
+        }
+        
+    }
+    
+
+
     return 0;
 }
