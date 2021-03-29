@@ -8,6 +8,7 @@
 #include <stdio.h>
 #include "./Headers/labirinto.h"
 //gcc -o exec main.c ./Headers/labirinto.h ./Sources/labirinto.c
+//Como rodar o makefile no windows mingw32-make <enter>  exec <enter>
 
 int main(int argc, char const *argv[])
 {
