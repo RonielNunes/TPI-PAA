@@ -5,12 +5,9 @@
 *   Professor: Daniel Mendes Barbosa
 */
 
-#include <stdlib.h>
-#include <stdio.h>
-#include "./Headers/labirinto.h"
-#include "./Headers/auxiliares.h"
+#include "./Headers/includes.h"
 
-//gcc -o exec main.c ./Headers/labirinto.h ./Sources/labirinto.c
+//gcc -o exec main.c ./Sources/labirinto.c ./Sources/auxiliares.c
 //Como rodar o makefile no windows mingw32-make <enter>  exec <enter>
 
 int main(int argc, char const *argv[])
@@ -19,10 +16,11 @@ int main(int argc, char const *argv[])
     Labirinto labirinto;
     int linha = 10;
     int coluna = 10;
+    int escolhaMenu;
 
     labirinto = inicializaLabirinto(linha,coluna);
     
-    for (int i = 0; i < linha; i++)
+    /*for (int i = 0; i < linha; i++)
     {
         for (int j = 0; j < coluna; j++)
         {
@@ -37,6 +35,35 @@ int main(int argc, char const *argv[])
         {
             printf("%d ",labirinto[i][j]);
         }
-    }
+    }*/
+
+    textoInicial ();
+
+    do{
+        escolhaMenu = escolhaUsuario ();
+
+        switch(escolhaMenu){
+            case 1:
+                puts("abrir e ler arquivo");
+                break;
+
+            case 2:
+                puts("processar matriz");
+                break;
+
+            case 0:
+                puts("Obrigado por utilizar!");
+                system("pause");
+                break;
+
+            default:
+                puts("Valor invalido! Poderia inserir outro?!");
+                break;
+        }
+
+        puts("");
+
+    }while(escolhaMenu != 0);    
+
     return 0;
 }

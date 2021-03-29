@@ -10,6 +10,8 @@
 #ifndef AUXILIARES_H
 #define AUXILIARES_H
 
+#include "includes.h"
+
 // ================ declaracao de funcoes ================
 
 void linha ();

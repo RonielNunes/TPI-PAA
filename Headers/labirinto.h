@@ -5,8 +5,12 @@
 *   Professor: Daniel Mendes Barbosa
 */
 
+// ================ header das funcoes principais ================
+
 #ifndef LABIRINTO_H
 #define LABIRINTO_H
+
+#include "includes.h"
 
 //Estrutura??
 

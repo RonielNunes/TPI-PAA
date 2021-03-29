@@ -5,10 +5,10 @@
 *   Professor: Daniel Mendes Barbosa
 */
 
-#include "../Headers/auxiliares.h"
+#include "../Headers/includes.h"
 
 void linha (){
-    for(int i = 0; i < 50; i++)
+    for(int i = 0; i < 40; i++)
         printf("=");
     puts("");
 }
@@ -24,7 +24,7 @@ int escolhaUsuario (){
 
     puts("Escolha uma das opcoes abaixo:");
     linha(); puts("1 - Carregar novo arquivo de dados\n2 - Processar e Exibir resposta\n0 - Finalizar o Programa\n");
-    linha(); printf("Sua escolha:");
+    linha(); printf("Sua escolha: ");
     scanf("%d", &escolha);
 
     return escolha;

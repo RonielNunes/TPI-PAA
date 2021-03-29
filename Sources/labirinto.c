@@ -5,8 +5,8 @@
 *   Professor: Daniel Mendes Barbosa
 */
 
-#include "../Headers/labirinto.h"
-#include <malloc.h>
+#include "../Headers/includes.h"
+
 
 Labirinto inicializaLabirinto(int linha, int coluna){
     int **labirintoExterno;
