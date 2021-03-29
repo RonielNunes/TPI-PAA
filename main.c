@@ -34,7 +34,5 @@ int main(int argc, char const *argv[])
             printf("%d ",labirinto[i][j]);
         }
     }
-    
-
     return 0;
 }
