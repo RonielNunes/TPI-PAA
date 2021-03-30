@@ -17,7 +17,7 @@
 void linha ();
 void textoInicial ();
 int escolhaUsuario ();
-void leituraArquivo(Labirinto labirinto);
+Labirinto leituraArquivo(int *qtLinhas, int *qtColunas, int *qtChaves);
 void limpaTela();
 
 #endif

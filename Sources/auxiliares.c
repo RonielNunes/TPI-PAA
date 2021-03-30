@@ -37,11 +37,13 @@ int escolhaUsuario()
     return escolha;
 }
 
-void leituraArquivo(Labirinto labirinto)
+Labirinto leituraArquivo(int *qtLinhas, int *qtColunas, int *qtChaves)
 {
-    int qtLinhas, qtColunas, qtChaves, i, j;
+    int i, j;
 
-    char aux, nomeArquivo[20], caminhoArquivo[20];
+    Labirinto labirinto;
+
+    char nomeArquivo[20], caminhoArquivo[20];
 
     FILE *arquivo;
 
@@ -53,35 +55,35 @@ void leituraArquivo(Labirinto labirinto)
 
     arquivo = fopen(caminhoArquivo, "r");
 
-    if (arquivo == NULL) // verificar execução na main
+    if (arquivo == NULL)
     {
         puts("Erro de abertura!");
         system("pause");
-        return;
+        return NULL;
     }
 
-    fscanf(arquivo, "%d %d %d", &qtLinhas, &qtColunas, &qtChaves);
+    fscanf(arquivo, "%d %d %d", qtLinhas, qtColunas, qtChaves);
 
-    labirinto = inicializaLabirinto(qtLinhas, qtColunas);
+    labirinto = inicializaLabirinto(*qtLinhas, *qtColunas);
 
-    char stringLinha[qtColunas]; // variavel que armazenara cada linha a partir da 2ª linha do arquivo
+    char stringLinha[*qtColunas]; // variavel que armazenara cada linha a partir da 2ª linha do arquivo
 
-    for (i = 0; i < qtLinhas; i++)
+    for (i = 0; i < (*qtLinhas); i++)
     {
         fscanf(arquivo, "%s", &stringLinha);
-        for (j = 0; j < qtColunas; j++)
+        for (j = 0; j < (*qtColunas); j++)
         {
-            aux = stringLinha[j];
-            labirinto[i][j] = atoi(&aux);
-            //printf("%d ", labirinto[i][j]); //print da matriz para verificar leitura do arquivo - retirar antes de entregar
+            labirinto[i][j] = stringLinha[j] - '0';
         }
-        puts("");
     }
-
+    
     //printf("Quantidade de linhas: %d, quantidade de colunas: %d e quantidade de chaves: %d\n", qtLinhas, qtColunas, qtChaves); //print dos dados do arquivo para verificar leitura - retirar antes de entregar
 
     fclose(arquivo);
-    //system("pause"); //descomentar essa linha caso descomente as linhas dos prints
+
+    system("pause");//descomentar essa linha caso descomente as linhas dos prints
+
+    return labirinto;
 }
 
 void limpaTela(){

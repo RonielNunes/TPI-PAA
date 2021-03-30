@@ -17,20 +17,23 @@
           comando por meio de um switch/case
 
 • Leitura de Arquivo
+    - Retorna uma matriz alocada dinamicamente ou nulo, depende da abertura do arquivo
     - Após o usuario entrar com o nome do arquivo, é concatenada a string "./arquivos/" com o 
       nome digitado pelo usuario e armazenada, a nova string, na variavel "caminhoArquivo";
         - Essa concatenação se deve ao fato dos arquivos estarem em uma pasta separada "arquivos"
-    - Após a definição do endereço do arquivo é tentada feita a leitura, caso falhe uma mensagem é
-      mostrada na tela e o programa retorna para o main, caso contrário, prossegue com a execução;
+    - Após a definição do endereço do arquivo é tentada a leitura. Caso falhe, uma mensagem é
+      mostrada na tela e o programa retorna nulo para o main, caso contrário, prossegue com a 
+      execução;
     - Por meio da função fscanf são armazenados os primeiros parâmetros, separados por espaço, em
       suas respectivas variáveis;
     - As demais linhas dizem respeito aos valores que irão compor a matriz, linhas essas que não
       apresentam espaço entre os valores, logo os valores serão armazenados em uma variável string;
         - Após isso, pegamos cada posição dessa string por meio de um for;
-        - Atribuimos essa posição para uma outra variavel char "aux";
-        - Por meio da função atoi convertemos uma string em inteiro por meio da tabela ASCII;
-        - Atribuimos essa conversão para a posição i, j da matriz;
+        - Fazemos o valor dessa posição - '0' para converter para inteiro;
+        - Atribuimos esse inteiro para a posição i, j da matriz;
     - Fechamos o arquivo.
+    - Caso a leitura ocorra sem problemas, é retornado o labirinto contido no arquivo;
+      - Labirinto este atribuído para o labirinto declarado na main
 
 • limpaTela
     - Depois de definido o SO, esta função contem um if/else para definir qual comando será usado
@@ -42,3 +45,6 @@
 • mostraLabirinto
 
 • getPosicaoInicialEstudante
+
+• Observações - fazer após terminar o TP
+    - Retirar printfs de debug e fazer comentários pertinentes

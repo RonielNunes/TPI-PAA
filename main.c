@@ -13,8 +13,8 @@
 int main(int argc, char const *argv[])
 {
     /* code */
-    Labirinto labirinto;
-    int escolhaMenu;
+    Labirinto labirinto = NULL;
+    int escolhaMenu, qtLinhas, qtColunas, qtChaves;
 
     do
     {
@@ -25,12 +25,25 @@ int main(int argc, char const *argv[])
         {
         case 1:
             limpaTela();
-            leituraArquivo(labirinto);
+            labirinto = leituraArquivo(&qtLinhas, &qtColunas, &qtChaves);
             break;
 
         case 2:
             limpaTela();
+            if (labirinto == NULL){
+                puts("Voce precisa entrar com um arquivo valido primeiro!");
+                system("pause");
+                break;
+            }
             puts("processar matriz");
+            system("pause");
+            break;
+
+        case 3:
+
+            mostraLabirinto(qtLinhas, qtColunas, labirinto); //print da matriz para verificar leitura do arquivo - retirar antes de entregar
+
+            printf("linhas: %d\ncolunas: %d\nchaves: %d\n", qtLinhas, qtColunas, qtChaves);
             system("pause");
             break;
 
@@ -43,6 +56,7 @@ int main(int argc, char const *argv[])
         default:
             limpaTela();
             puts("Valor invalido! Poderia inserir outro?!");
+            system("pause");
             break;
         }
 
