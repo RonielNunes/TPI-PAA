@@ -14,28 +14,11 @@ int main(int argc, char const *argv[])
 {
     /* code */
     Labirinto labirinto;
-    int linha = 10;
-    int coluna = 10;
     int escolhaMenu;
-
-    labirinto = inicializaLabirinto(linha,coluna);
-    
-    /*for (int i = 0; i < linha; i++)
-    {
-        for (int j = 0; j < coluna; j++)
-        {
-            labirinto[i][j] = 0;
-        }
-    }
-
-    for (int i = 0; i < linha; i++)
-    {
-        printf("\n");
-        for (int j = 0; j < coluna; j++)
-        {
-            printf("%d ",labirinto[i][j]);
-        }
-    }*/
+     
+    FILE *arquivo = NULL;
+    int linha, coluna, nChaves;
+    int i = 0,j = 0;
 
     textoInicial ();
 
@@ -45,6 +28,29 @@ int main(int argc, char const *argv[])
         switch(escolhaMenu){
             case 1:
                 puts("abrir e ler arquivo");
+
+
+                //LEITURA DE ARQUIVO IMPROVISADO, TESTANDO.
+                arquivo = fopen("./arquivos/labirinto1.txt","r");
+                if (arquivo == NULL){
+                    printf("ERRO!\n");
+                }else{
+                    fscanf(arquivo,"%d %d %d",&linha,&coluna,&nChaves);
+                    labirinto = inicializaLabirinto(linha,coluna);
+                    char reader[coluna];
+                    char auxChar;
+                    //printf("%d %d %d \n",linha,coluna,nChaves);
+                    while (!feof(arquivo)){
+                        fscanf(arquivo,"%s",&reader);
+                        for ( j = 0; j < coluna; j++){
+                            auxChar = reader[j];
+                            labirinto[i][j] = atoi(&auxChar);
+                        }
+                        i++;
+                    }
+                    mostraLabirinto(linha,coluna,labirinto);
+                }
+                fclose(arquivo);
                 break;
 
             case 2:
