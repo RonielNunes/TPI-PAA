@@ -1,6 +1,41 @@
+• includes.h
+    - Foi criado um arquivo .h chamado includes que irá conter as chamadas de todas as bibliotecas 
+      usadas no trabalho prático, bem como a definição do SO para definir qual comando será utilizado
+      para limpar o terminal (cls no windows e clear no linux);
+    - Assim, ao invés de incluir a mesma biblioteca em vários arquivos diferentes, incluimos tudo
+      no includes.h e posteriormente chamamos tal arquivo com as bibliotecas necessarias;
+
+• ED
+    - ED usada: matriz alocada dinamicamente
+
 • Menu
+    - O menu é executado sempre que a opção escolhida seja != de 0, por meio de um do-while;
+    - Conta com a função linha, que printa 40x "=";
+    - Conta também com a função textoInicial, que printa o titulo do algoritmo;
+    - Após ser mostrado o texto inicial junto às linhas, é mostrado as opções do usuário
+        - Opção esta que é retornada pela função escolhaUsuario para a main para assim executar o
+          comando por meio de um switch/case
 
 • Leitura de Arquivo
+    - Após o usuario entrar com o nome do arquivo, é concatenada a string "./arquivos/" com o 
+      nome digitado pelo usuario e armazenada, a nova string, na variavel "caminhoArquivo";
+        - Essa concatenação se deve ao fato dos arquivos estarem em uma pasta separada "arquivos"
+    - Após a definição do endereço do arquivo é tentada feita a leitura, caso falhe uma mensagem é
+      mostrada na tela e o programa retorna para o main, caso contrário, prossegue com a execução;
+    - Por meio da função fscanf são armazenados os primeiros parâmetros, separados por espaço, em
+      suas respectivas variáveis;
+    - As demais linhas dizem respeito aos valores que irão compor a matriz, linhas essas que não
+      apresentam espaço entre os valores, logo os valores serão armazenados em uma variável string;
+        - Após isso, pegamos cada posição dessa string por meio de um for;
+        - Atribuimos essa posição para uma outra variavel char "aux";
+        - Por meio da função atoi convertemos uma string em inteiro por meio da tabela ASCII;
+        - Atribuimos essa conversão para a posição i, j da matriz;
+    - Fechamos o arquivo.
+
+• limpaTela
+    - Depois de definido o SO, esta função contem um if/else para definir qual comando será usado
+      para limpar o terminal, portanto, basta chamar a funcao limpaTela;
+        - Funcional no windows e linux
 
 • inicializaLabirinto
 
