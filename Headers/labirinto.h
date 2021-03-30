@@ -19,7 +19,7 @@ typedef int ** Labirinto;
 // ================ declaracao de funcoes ================
 
 Labirinto inicializaLabirinto(int linha, int coluna);
-void mostraLabirinto(int linha, int coluna,Labirinto labirinto);
-void getPosicaoInicialEstudante(int *x,int *y,int linha, int coluna, Labirinto labirinto);
+void mostraLabirinto(int linha, int coluna, Labirinto labirinto);
+void getPosicaoInicialEstudante(int *x, int *y, int linha, int coluna, Labirinto labirinto);
 
 #endif

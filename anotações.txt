@@ -1,0 +1,9 @@
+• Menu
+
+• Leitura de Arquivo
+
+• inicializaLabirinto
+
+• mostraLabirinto
+
+• getPosicaoInicialEstudante

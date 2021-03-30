@@ -20,7 +20,7 @@ Labirinto inicializaLabirinto(int linha, int coluna){
     return labirintoExterno;
 }
 
-void mostraLabirinto(int linha, int coluna,Labirinto labirinto){
+void mostraLabirinto(int linha, int coluna, Labirinto labirinto){
     for (int i = 0; i < linha; i++){
         printf("\n");
         for (int j = 0; j < coluna; j++){
@@ -30,7 +30,7 @@ void mostraLabirinto(int linha, int coluna,Labirinto labirinto){
     printf("\n");
 }
 
-void getPosicaoInicialEstudante(int *x,int *y,int linha, int coluna,Labirinto labirinto){
+void getPosicaoInicialEstudante(int *x, int *y, int linha, int coluna, Labirinto labirinto){
     for (int i = 0; i < linha; i++){
         for (int j = 0; j < coluna; j++){
             if(labirinto[i][j] == 0){

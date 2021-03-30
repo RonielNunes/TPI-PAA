@@ -15,61 +15,40 @@ int main(int argc, char const *argv[])
     /* code */
     Labirinto labirinto;
     int escolhaMenu;
-     
-    FILE *arquivo = NULL;
-    int linha, coluna, nChaves;
-    int i = 0,j = 0;
 
-    textoInicial ();
+    do
+    {
+        system("cls");
+        escolhaMenu = escolhaUsuario();
 
-    do{
-        escolhaMenu = escolhaUsuario ();
+        switch (escolhaMenu)
+        {
+        case 1:
+            system("cls");
+            leituraArquivo(labirinto);
+            break;
 
-        switch(escolhaMenu){
-            case 1:
-                puts("abrir e ler arquivo");
+        case 2:
+            system("cls");
+            puts("processar matriz");
+            system("pause");
+            break;
 
+        case 0:
+            system("cls");
+            puts("Obrigado por utilizar!");
+            system("pause");
+            break;
 
-                //LEITURA DE ARQUIVO IMPROVISADO, TESTANDO.
-                arquivo = fopen("./arquivos/labirinto1.txt","r");
-                if (arquivo == NULL){
-                    printf("ERRO!\n");
-                }else{
-                    fscanf(arquivo,"%d %d %d",&linha,&coluna,&nChaves);
-                    labirinto = inicializaLabirinto(linha,coluna);
-                    char reader[coluna];
-                    char auxChar;
-                    //printf("%d %d %d \n",linha,coluna,nChaves);
-                    while (!feof(arquivo)){
-                        fscanf(arquivo,"%s",&reader);
-                        for ( j = 0; j < coluna; j++){
-                            auxChar = reader[j];
-                            labirinto[i][j] = atoi(&auxChar);
-                        }
-                        i++;
-                    }
-                    mostraLabirinto(linha,coluna,labirinto);
-                }
-                fclose(arquivo);
-                break;
-
-            case 2:
-                puts("processar matriz");
-                break;
-
-            case 0:
-                puts("Obrigado por utilizar!");
-                system("pause");
-                break;
-
-            default:
-                puts("Valor invalido! Poderia inserir outro?!");
-                break;
+        default:
+            system("cls");
+            puts("Valor invalido! Poderia inserir outro?!");
+            break;
         }
 
-        puts("");
+        puts(""); // quebra de linha entre uma execucao e outra
 
-    }while(escolhaMenu != 0);    
+    } while (escolhaMenu != 0);
 
     return 0;
 }

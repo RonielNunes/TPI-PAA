@@ -5,16 +5,11 @@
 *   Professor: Daniel Mendes Barbosa
 */
 
-// ================ header para includes ================
-
-#ifndef INCLUDES_H
-#define INCLUDES_H
+// ================ includes ================
 
 #include <stdlib.h>
 #include <stdio.h>
 #include <malloc.h>
 
-#include "../Headers/auxiliares.h"
-#include "../Headers/labirinto.h"
-
-#endif
+#include "auxiliares.h"
+#include "labirinto.h"

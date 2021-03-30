@@ -17,6 +17,6 @@
 void linha ();
 void textoInicial ();
 int escolhaUsuario ();
-
+void leituraArquivo(Labirinto labirinto);
 
 #endif
