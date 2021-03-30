@@ -73,13 +73,21 @@ void leituraArquivo(Labirinto labirinto)
         {
             aux = stringLinha[j];
             labirinto[i][j] = atoi(&aux);
-            printf("%d ", labirinto[i][j]); //print da matriz para verificar leitura do arquivo - retirar antes de entregar
+            //printf("%d ", labirinto[i][j]); //print da matriz para verificar leitura do arquivo - retirar antes de entregar
         }
         puts("");
     }
 
-    printf("Quantidade de linhas: %d, quantidade de colunas: %d e quantidade de chaves: %d\n", qtLinhas, qtColunas, qtChaves); //print dos dados do arquivo para verificar leitura - retirar antes de entregar
+    //printf("Quantidade de linhas: %d, quantidade de colunas: %d e quantidade de chaves: %d\n", qtLinhas, qtColunas, qtChaves); //print dos dados do arquivo para verificar leitura - retirar antes de entregar
 
     fclose(arquivo);
-    system("pause");
+    //system("pause"); //descomentar essa linha caso descomente as linhas dos prints
+}
+
+void limpaTela(){
+    #ifdef OS_Windows
+        system("cls");
+    #else
+        system("clear");
+    #endif  
 }

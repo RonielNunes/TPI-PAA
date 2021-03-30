@@ -5,6 +5,19 @@
 *   Professor: Daniel Mendes Barbosa
 */
 
+//definicao do SO
+
+#ifdef __unix__         
+    #include <unistd.h>
+
+#elif defined(_WIN32) || defined(WIN32) 
+
+   #define OS_Windows
+
+   #include <windows.h>
+
+#endif
+
 // ================ includes ================
 
 #include <stdlib.h>

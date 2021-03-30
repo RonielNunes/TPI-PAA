@@ -18,5 +18,6 @@ void linha ();
 void textoInicial ();
 int escolhaUsuario ();
 void leituraArquivo(Labirinto labirinto);
+void limpaTela();
 
 #endif

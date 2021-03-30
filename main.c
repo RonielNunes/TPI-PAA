@@ -18,30 +18,30 @@ int main(int argc, char const *argv[])
 
     do
     {
-        system("cls");
+        limpaTela();
         escolhaMenu = escolhaUsuario();
 
         switch (escolhaMenu)
         {
         case 1:
-            system("cls");
+            limpaTela();
             leituraArquivo(labirinto);
             break;
 
         case 2:
-            system("cls");
+            limpaTela();
             puts("processar matriz");
             system("pause");
             break;
 
         case 0:
-            system("cls");
+            limpaTela();
             puts("Obrigado por utilizar!");
             system("pause");
             break;
 
         default:
-            system("cls");
+            limpaTela();
             puts("Valor invalido! Poderia inserir outro?!");
             break;
         }
