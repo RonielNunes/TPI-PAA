@@ -39,7 +39,6 @@ int escolhaUsuario()
 
 void leituraArquivo(TipoApontador *apLabirinto)
 {
-    puts("entrou arquivo");
     int i, j, linha, coluna, chave;
 
     char nomeArquivo[20], caminhoArquivo[20];
