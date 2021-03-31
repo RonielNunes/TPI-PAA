@@ -11,6 +11,7 @@
 #define LABIRINTO_H
 
 #include "includes.h"
+#define QT_MOV 4
 
 typedef int **Labirinto;
 
@@ -29,5 +30,8 @@ typedef TipoLabirinto *TipoApontador;
 void inicializaLabirinto(TipoApontador *apLabirinto, int linha, int coluna, int chave);
 void mostraLabirinto(TipoApontador *apLabirinto);
 int getPosicaoInicialEstudante(int *x, int *y, TipoApontador *apLabirinto);
+void movimenta_estudante(TipoApontador *apLabirinto);
+int movimenta_estudante_interno(TipoApontador *apLabirinto, int x0, int y0, int *movimentoLinha, int *movimentoColuna);
+int posValida(TipoApontador *apLabirinto, int linha, int coluna);
 
 #endif

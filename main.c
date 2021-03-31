@@ -38,7 +38,7 @@ int main(int argc, char const *argv[])
                 system("pause");
                 break;
             }
-            puts("processar matriz");
+            movimenta_estudante(&labirinto);
             system("pause");
             break;
 
@@ -48,7 +48,9 @@ int main(int argc, char const *argv[])
 
             // printf("linhas: %d\ncolunas: %d\nchaves: %d\n", labirinto->qtLinhas, labirinto->qtColunas, labirinto->qtChaves);
 
-            printf("%d", getPosicaoInicialEstudante(&x, &y, &labirinto));
+            // printf("%d", getPosicaoInicialEstudante(&x, &y, &labirinto));
+
+            // printf("%d", posValida(&labirinto, 9, 5));
 
             system("pause");
             break;
