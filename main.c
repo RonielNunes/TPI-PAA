@@ -13,24 +13,27 @@
 int main(int argc, char const *argv[])
 {
     /* code */
-    Labirinto labirinto = NULL;
-    int escolhaMenu, qtLinhas, qtColunas, qtChaves;
+    TipoApontador labirinto;
+    labirinto->labirinto = NULL;
+    int escolhaMenu;
+    int x, y;
 
     do
     {
-        limpaTela();
+        //limpaTela();
         escolhaMenu = escolhaUsuario();
 
         switch (escolhaMenu)
         {
         case 1:
-            limpaTela();
-            labirinto = leituraArquivo(&qtLinhas, &qtColunas, &qtChaves);
+            //limpaTela();
+            leituraArquivo(&labirinto);
             break;
 
         case 2:
-            limpaTela();
-            if (labirinto == NULL){
+            //limpaTela();
+            if (labirinto->labirinto == NULL)
+            {
                 puts("Voce precisa entrar com um arquivo valido primeiro!");
                 system("pause");
                 break;
@@ -41,20 +44,23 @@ int main(int argc, char const *argv[])
 
         case 3:
 
-            mostraLabirinto(qtLinhas, qtColunas, labirinto); //print da matriz para verificar leitura do arquivo - retirar antes de entregar
+            // mostraLabirinto(&labirinto); //print da matriz para verificar leitura do arquivo - retirar antes de entregar
 
-            printf("linhas: %d\ncolunas: %d\nchaves: %d\n", qtLinhas, qtColunas, qtChaves);
+            // printf("linhas: %d\ncolunas: %d\nchaves: %d\n", labirinto->qtLinhas, labirinto->qtColunas, labirinto->qtChaves);
+
+            printf("%d", getPosicaoInicialEstudante(&x, &y, &labirinto));
+
             system("pause");
             break;
 
         case 0:
-            limpaTela();
+            //limpaTela();
             puts("Obrigado por utilizar!");
             system("pause");
             break;
 
         default:
-            limpaTela();
+            //limpaTela();
             puts("Valor invalido! Poderia inserir outro?!");
             system("pause");
             break;

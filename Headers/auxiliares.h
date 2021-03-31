@@ -14,10 +14,10 @@
 
 // ================ declaracao de funcoes ================
 
-void linha ();
-void textoInicial ();
-int escolhaUsuario ();
-Labirinto leituraArquivo(int *qtLinhas, int *qtColunas, int *qtChaves);
+void linha();
+void textoInicial();
+int escolhaUsuario();
+void leituraArquivo(TipoApontador *apLabirinto);
 void limpaTela();
 
 #endif

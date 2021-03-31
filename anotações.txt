@@ -78,3 +78,4 @@
   
 • Observações - fazer após terminar o TP
     - Retirar printfs de debug e fazer comentários pertinentes
+    - Acrescentar printf na funcao getPosicaoInicialEstudante = "O estudante esta inicialmente na posicao x, y

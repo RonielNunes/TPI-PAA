@@ -37,11 +37,10 @@ int escolhaUsuario()
     return escolha;
 }
 
-Labirinto leituraArquivo(int *qtLinhas, int *qtColunas, int *qtChaves)
+void leituraArquivo(TipoApontador *apLabirinto)
 {
-    int i, j;
-
-    Labirinto labirinto;
+    puts("entrou arquivo");
+    int i, j, linha, coluna, chave;
 
     char nomeArquivo[20], caminhoArquivo[20];
 
@@ -59,37 +58,36 @@ Labirinto leituraArquivo(int *qtLinhas, int *qtColunas, int *qtChaves)
     {
         puts("Erro de abertura!");
         system("pause");
-        return NULL;
+        return;
     }
 
-    fscanf(arquivo, "%d %d %d", qtLinhas, qtColunas, qtChaves);
+    fscanf(arquivo, "%d %d %d", &linha, &coluna, &chave);
 
-    labirinto = inicializaLabirinto(*qtLinhas, *qtColunas);
+    inicializaLabirinto(&(*apLabirinto), linha, coluna, chave);
 
-    char stringLinha[*qtColunas]; // variavel que armazenara cada linha a partir da 2ª linha do arquivo
+    char stringLinha[(*apLabirinto)->qtColunas]; // variavel que armazenara cada linha a partir da 2ª linha do arquivo
 
-    for (i = 0; i < (*qtLinhas); i++)
+    for (i = 0; i < ((*apLabirinto)->qtLinhas); i++)
     {
         fscanf(arquivo, "%s", &stringLinha);
-        for (j = 0; j < (*qtColunas); j++)
+        for (j = 0; j < ((*apLabirinto)->qtColunas); j++)
         {
-            labirinto[i][j] = stringLinha[j] - '0';
+            (*apLabirinto)->labirinto[i][j] = stringLinha[j] - '0';
         }
     }
-    
-    //printf("Quantidade de linhas: %d, quantidade de colunas: %d e quantidade de chaves: %d\n", qtLinhas, qtColunas, qtChaves); //print dos dados do arquivo para verificar leitura - retirar antes de entregar
 
     fclose(arquivo);
 
-    system("pause");//descomentar essa linha caso descomente as linhas dos prints
+    system("pause"); //descomentar essa linha caso descomente as linhas dos prints
 
-    return labirinto;
+    return;
 }
 
-void limpaTela(){
-    #ifdef OS_Windows
-        system("cls");
-    #else
-        system("clear");
-    #endif  
+void limpaTela()
+{
+#ifdef OS_Windows
+    system("cls");
+#else
+    system("clear");
+#endif
 }

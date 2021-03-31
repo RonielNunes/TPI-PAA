@@ -12,14 +12,22 @@
 
 #include "includes.h"
 
-//Estrutura??
+typedef int **Labirinto;
 
-typedef int ** Labirinto;
+typedef struct
+{
+
+    Labirinto labirinto;
+    int qtLinhas, qtColunas, qtChaves;
+
+} TipoLabirinto;
+
+typedef TipoLabirinto *TipoApontador;
 
 // ================ declaracao de funcoes ================
 
-Labirinto inicializaLabirinto(int linha, int coluna);
-void mostraLabirinto(int linha, int coluna, Labirinto labirinto);
-void getPosicaoInicialEstudante(int *x, int *y, int linha, int coluna, Labirinto labirinto);
+void inicializaLabirinto(TipoApontador *apLabirinto, int linha, int coluna, int chave);
+void mostraLabirinto(TipoApontador *apLabirinto);
+int getPosicaoInicialEstudante(int *x, int *y, TipoApontador *apLabirinto);
 
 #endif

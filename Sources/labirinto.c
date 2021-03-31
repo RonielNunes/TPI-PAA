@@ -7,37 +7,52 @@
 
 #include "../Headers/includes.h"
 
+void inicializaLabirinto(TipoApontador *apLabirinto, int linha, int coluna, int chave)
+{
 
-Labirinto inicializaLabirinto(int linha, int coluna){
-    Labirinto labirintoExterno;
-    
-    labirintoExterno = (int**)calloc((linha+1),sizeof(int*));
-    for (int i = 0; i < linha; i++)
+    (*apLabirinto)->qtLinhas = linha;
+    (*apLabirinto)->qtColunas = coluna;
+    (*apLabirinto)->qtChaves = chave;
+
+    (*apLabirinto)->labirinto = (int **)calloc(((*apLabirinto)->qtLinhas + 1), sizeof(int *));
+    for (int i = 0; i < (*apLabirinto)->qtLinhas; i++)
     {
-        labirintoExterno[i] = (int*)calloc((coluna+1),sizeof(int));
+        (*apLabirinto)->labirinto[i] = (int *)calloc(((*apLabirinto)->qtColunas + 1), sizeof(int));
     }
-    
-    return labirintoExterno;
+
+    return;
 }
 
-void mostraLabirinto(int linha, int coluna, Labirinto labirinto){
-    for (int i = 0; i < linha; i++){
+void mostraLabirinto(TipoApontador *apLabirinto)
+{
+    for (int i = 0; i < (*apLabirinto)->qtLinhas; i++)
+    {
         printf("\n");
-        for (int j = 0; j < coluna; j++){
-            printf("%d ",labirinto[i][j]);
+        for (int j = 0; j < (*apLabirinto)->qtColunas; j++)
+        {
+            printf("%d ", (*apLabirinto)->labirinto[i][j]);
         }
     }
     printf("\n");
 }
 
-void getPosicaoInicialEstudante(int *x, int *y, int linha, int coluna, Labirinto labirinto){
-    for (int i = 0; i < linha; i++){
-        for (int j = 0; j < coluna; j++){
-            if(labirinto[i][j] == 0){
+// retorna 1 se encontrar posicao, 0 caso contrario
+int getPosicaoInicialEstudante(int *x, int *y, TipoApontador *apLabirinto)
+{
+    for (int i = 0; i < (*apLabirinto)->qtLinhas; i++)
+    {
+        for (int j = 0; j < (*apLabirinto)->qtColunas; j++)
+        {
+            if ((*apLabirinto)->labirinto[i][j] == 0)
+            {
                 (*x) = i;
                 (*y) = j;
-            }   
+                return 1;
+            }
         }
     }
-}
 
+    printf("i: %d, j: %d", *x, *y);
+
+    return 0;
+}
