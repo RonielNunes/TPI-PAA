@@ -41,10 +41,40 @@
         - Funcional no windows e linux
 
 • inicializaLabirinto
+    - A função inicialização tem como parametros as variaveis linha e colunas, ambas do tipo inteiro.
+     Essa função retorna o tipo "Labirinto", esse tipo é a renomeação de um duplo ponteiro para 
+     inteiro.Além disso é usado nessa função a calloc para fazer a alocação da matriz. A função 
+     calloc, nescessita de dois argumentos o número de variáveis a ser alocadas na memoria e o 
+     tamanho em bytes do tipo da variavel que será alocada.
+
+    - Execução
+
+    Primeiramente é feito a criação de uma variável do tipo Labirinto, nomeada de labirintoExterno.
+    A labirintoExterno receberá a alocação da quantidade de linhas + 1, isso ocore pois essa primeira
+    alocação se faz de inicio de um ponteiro para outro ponteiro que por sua vez aponta para a  
+    posicao que armazenar um valor. Assim perdemos uma posição por termos dois ponteiro, sendo nescessario
+    o acrescimo de mais um. 
+    Para a alocação das colunas, temos que somar mais um também por causa da perda citada. Essa alocação
+    utiliza-se de um for para passar por tordas as linhas alocadas e apartir de cada linha é alocado um vetor 
+    tendo a quantidade de colunas lidas do arquivo.
+      
+    Resumo apartir do primeiro ponteiro: A alocação é composta de um vetor de ponteiros que corresponde ao 
+    primeiro indice da matriz, sendo que cada ponteiro aponta para o inicio de uma linha da matriz. Em cada 
+    linha existe um vetor alocado dinamicamente.
+
 
 • mostraLabirinto
+  A função mostra labirinto, tem como parametro a quantidade de linhas, colunas e a variavel que armazena
+  a matriz com os valores que o representa. Essa função faz a utilização de dois fors aninhados, sendo o 
+  primeiro utilizado para percorrer as linhas e o segundo para percorrer as colunas.
+  A matriz é exibida em sua forma padrão, linhas x colunas. 
 
 • getPosicaoInicialEstudante
-
+  A função getPosicaoInicialEstudante, tem como parametros a quantidade de linhas, colunas, o labirinto 
+  que contem a matriz e mais duas variáveis passadas por referência(x e y). O Funcionamento da função é
+  o mesmo da mostraLabirinto, no entanto, se diferencia com a presença da condição para identificar onde
+  o valor 0(zero) e encontra na matriz. Quando é encontrado, temos a alteração dos valores das variáveis 
+  x e y, recendo os indices i e j respectivamente. 
+  
 • Observações - fazer após terminar o TP
     - Retirar printfs de debug e fazer comentários pertinentes
