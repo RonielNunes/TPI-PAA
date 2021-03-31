@@ -20,18 +20,18 @@ int main(int argc, char const *argv[])
 
     do
     {
-        //limpaTela();
+        limpaTela();
         escolhaMenu = escolhaUsuario();
 
         switch (escolhaMenu)
         {
         case 1:
-            //limpaTela();
+            limpaTela();
             leituraArquivo(&labirinto);
             break;
 
         case 2:
-            //limpaTela();
+            limpaTela();
             if (labirinto->labirinto == NULL)
             {
                 puts("Voce precisa entrar com um arquivo valido primeiro!");
@@ -44,7 +44,7 @@ int main(int argc, char const *argv[])
 
         case 3:
 
-            // mostraLabirinto(&labirinto); //print da matriz para verificar leitura do arquivo - retirar antes de entregar
+            mostraLabirinto(&labirinto); //print da matriz para verificar leitura do arquivo - retirar antes de entregar
 
             // printf("linhas: %d\ncolunas: %d\nchaves: %d\n", labirinto->qtLinhas, labirinto->qtColunas, labirinto->qtChaves);
 
@@ -56,13 +56,13 @@ int main(int argc, char const *argv[])
             break;
 
         case 0:
-            //limpaTela();
+            limpaTela();
             puts("Obrigado por utilizar!");
             system("pause");
             break;
 
         default:
-            //limpaTela();
+            limpaTela();
             puts("Valor invalido! Poderia inserir outro?!");
             system("pause");
             break;

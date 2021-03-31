@@ -7,14 +7,14 @@
 
 //definicao do SO
 
-#ifdef __unix__         
-    #include <unistd.h>
+#ifdef __unix__
+#include <unistd.h>
 
-#elif defined(_WIN32) || defined(WIN32) 
+#elif defined(_WIN32) || defined(WIN32)
 
-   #define OS_Windows
+#define OS_Windows
 
-   #include <windows.h>
+#include <windows.h>
 
 #endif
 
@@ -24,6 +24,7 @@
 #include <stdio.h>
 #include <malloc.h>
 #include <string.h>
+#include <time.h>
 
 #include "auxiliares.h"
 #include "labirinto.h"

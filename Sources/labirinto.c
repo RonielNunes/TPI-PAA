@@ -62,9 +62,9 @@ void movimenta_estudante(TipoApontador *apLabirinto)
     // posicoes iniciais
     int x0, y0, solucao;
 
-    // possiveis movimentos
-    int movimentoLinha[QT_MOV] = {1, 0, 0, -1};
-    int movimentoColuna[QT_MOV] = {0, -1, 1, 0};
+    // possiveis movimentos - cima, direita, esquerda, baixo
+    int movimentoLinha[QT_MOV] = {-1, 0, 0, 1};
+    int movimentoColuna[QT_MOV] = {0, 1, -1, 0};
 
     if (!getPosicaoInicialEstudante(&x0, &y0, &(*apLabirinto)))
     {
@@ -74,32 +74,49 @@ void movimenta_estudante(TipoApontador *apLabirinto)
     solucao = movimenta_estudante_interno(&(*apLabirinto), x0, y0, movimentoLinha, movimentoColuna);
 
     if (!solucao)
-        printf("O estudante se movimentou Z vezes e percebeu que o labirinto não tem saída.");
+        printf("O estudante se movimentou Z vezes e percebeu que o labirinto não tem saida.");
 
     return;
 }
 
 int movimenta_estudante_interno(TipoApontador *apLabirinto, int x0, int y0, int *movimentoLinha, int *movimentoColuna)
 {
-    int registroTentativa = 0, contMovimentacoes = 0;
+    //sleep(1);
+    int registroTentativa = 0;
 
     if (posValida(&(*apLabirinto), x0, y0))
     {
+        (*apLabirinto)->labirinto[x0][y0] = 4;
         printf("Linha: %d Coluna: %d\n", x0, y0);
         if (x0 == 0)
         {
             registroTentativa = 1;
             printf("O estudante se movimentou Z vezes e chegou na coluna %d da primeira linha\n", y0);
         }
-        while (registroTentativa == 0 && contMovimentacoes < QT_MOV)
+
+        for (int i = 0; i < QT_MOV; i++)
         {
-            registroTentativa = movimenta_estudante_interno(&(*apLabirinto),
-                                                            x0 + movimentoLinha[contMovimentacoes],
-                                                            y0 + movimentoColuna[contMovimentacoes],
-                                                            movimentoLinha,
-                                                            movimentoColuna);
-            contMovimentacoes++;
+            if (!registroTentativa)
+            {
+                registroTentativa = movimenta_estudante_interno(&(*apLabirinto),
+                                                                x0 + movimentoLinha[i],
+                                                                y0 + movimentoColuna[i],
+                                                                movimentoLinha,
+                                                                movimentoColuna);
+            }
         }
+
+        (*apLabirinto)->labirinto[x0][y0] = 1;
+
+        // while (registroTentativa == 0 && contMovimentacoes < QT_MOV)
+        // {
+        //     registroTentativa = movimenta_estudante_interno(&(*apLabirinto),
+        //                                                     x0 + movimentoLinha[contMovimentacoes],
+        //                                                     y0 + movimentoColuna[contMovimentacoes],
+        //                                                     movimentoLinha,
+        //                                                     movimentoColuna);
+        //     contMovimentacoes++;
+        // }
     }
 
     return registroTentativa;
