@@ -12,8 +12,7 @@
 // Algoritmo para texto colorido retirado do site: https://www.clubedohardware.com.br/topic/1307510-programa-em-c-ou-c-com-texto-colorido-como-criar-estou-usando-dev-c/
 
 /*             0     1    2     3   4      5      6      7         8  */
-typedef enum
-{
+typedef enum{
     BLACK,
     BLUE,
     GREEN,

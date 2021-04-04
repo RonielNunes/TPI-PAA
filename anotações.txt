@@ -5,8 +5,14 @@
     - Assim, ao invés de incluir a mesma biblioteca em vários arquivos diferentes, incluimos tudo
       no includes.h e posteriormente chamamos tal arquivo com as bibliotecas necessarias;
 
-• ED
-    - ED usada: matriz alocada dinamicamente
+• Estrutura de Dados
+    -A estrutura de dados é composta por uma quatro variáveis. A primeira variável é do tipo "Labirinto", 
+    esse tipo é a renomeação de um duplo ponteiro para o tipo inteiro. Ela é usada para fazer a alocação
+    da matriz, ou seja, essa variável se tornará uma matriz posteriormente.
+    - As demais variáveis são do tipo inteiro e sçao elas: qtLinhas, qtColunas e qtChaves.
+    Amazenando a quanitdade de linhas, colunas que formam a matriz e a quantidade de chaves respectivamente.
+   - A estrutura recebeu o nome de TipoLabirinto, além disso também foi feito nomeação do TipoApontador, que
+   é um ponteiro para a estrutura criada.
 
 • Menu
     - O menu é executado sempre que a opção escolhida seja != de 0, por meio de um do-while;
@@ -41,19 +47,22 @@
         - Funcional no windows e linux
 
 • inicializaLabirinto
-    - A função inicialização tem como parametros as variaveis linha e colunas, ambas do tipo inteiro.
-     Essa função retorna o tipo "Labirinto", esse tipo é a renomeação de um duplo ponteiro para 
-     inteiro.Além disso é usado nessa função a calloc para fazer a alocação da matriz. A função 
-     calloc, nescessita de dois argumentos o número de variáveis a ser alocadas na memoria e o 
-     tamanho em bytes do tipo da variavel que será alocada.
+    - A função inicialização tem como parametros as variaveis apLabirinto,linha, coluna e chave, 
+    sendo respectivamente dos tipos "TipoApontador" e "inteiros" as três ultimas citadas. 
+    - Utilizando a variável apLabirinto, foi preenchido os campos qtLinhas, qtColunas e qtChaves
+    presente na estrutura criada, apartir dos parametros recebidos como parametro  da função.
+    - Para fazer a alocação da matriz dinânica é utilizado a função calloc. Essa função, 
+    nescessita de dois argumentos o número de variáveis a ser alocadas na memoria e o tamanho 
+    em bytes do tipo da variavel que será alocada.
 
-    - Execução
+    - Execução da alocação da matriz
 
-    Primeiramente é feito a criação de uma variável do tipo Labirinto, nomeada de labirintoExterno.
-    A labirintoExterno receberá a alocação da quantidade de linhas + 1, isso ocore pois essa primeira
-    alocação se faz de inicio de um ponteiro para outro ponteiro que por sua vez aponta para a  
-    posicao que armazenar um valor. Assim perdemos uma posição por termos dois ponteiro, sendo nescessario
-    o acrescimo de mais um. 
+    Utilizando o ponteiro para a estrutura, tendo  referenciação da variável labirinto presente na
+    mesma ,receberá a alocação da quantidade de linhas + 1, isso ocore pois essa primeira alocação
+    se faz de inicio de um ponteiro para outro ponteiro que por sua vez aponta para a posicao que
+    armazenar um valor. Assim perdemos uma posição por termos dois ponteiro, sendo nescessario o
+    acrescimo de mais um em seu valor. 
+    
     Para a alocação das colunas, temos que somar mais um também por causa da perda citada. Essa alocação
     utiliza-se de um for para passar por tordas as linhas alocadas e apartir de cada linha é alocado um vetor 
     tendo a quantidade de colunas lidas do arquivo.
@@ -64,17 +73,34 @@
 
 
 • mostraLabirinto
-  A função mostra labirinto, tem como parametro a quantidade de linhas, colunas e a variavel que armazena
-  a matriz com os valores que o representa. Essa função faz a utilização de dois fors aninhados, sendo o 
-  primeiro utilizado para percorrer as linhas e o segundo para percorrer as colunas.
-  A matriz é exibida em sua forma padrão, linhas x colunas. 
+  A função mostraLabirinto tem como parametro uma variável do tipo TipoApontador. O objetivo 
+  dessa função é mostra o labirinto e os caminho feito pelo estudante para sair do mesmo caso
+   possivel. Seu funcionamento se baseia com a utilização de funções auxiliares "textcolor" 
+   para fazer a trasformação dos registros de caminhos no labirinto em algo visualemnte mais 
+   atrativo. É utilizado dois for's aninhados para percorrer a matriz que representa o 
+   labirinto e com isso é feito a identificação dos compotente do labirinto: posição inicial do estudante;
+  caminho feito até encontrar a saída; paredes e portas.
 
+  A códificação de cores ficou da seguinte maneira: 
+  BRANCO : identifica a posição inicial do estudante ao iniciar o labirinto;
+  AZUL: identifica as paredes do labirinto;
+  VERDE CLARO: partes do labirinto que o estudante poderia visitar, mas não visitou; 
+  VERDE ESCURO: partes que o estudante visitou até encontra a saída;
+  VERMELHO: faz a marcação da portas presente no labirinto.
+ 
 • getPosicaoInicialEstudante
-  A função getPosicaoInicialEstudante, tem como parametros a quantidade de linhas, colunas, o labirinto 
-  que contem a matriz e mais duas variáveis passadas por referência(x e y). O Funcionamento da função é
-  o mesmo da mostraLabirinto, no entanto, se diferencia com a presença da condição para identificar onde
-  o valor 0(zero) e encontra na matriz. Quando é encontrado, temos a alteração dos valores das variáveis 
+  A função getPosicaoInicialEstudante, tem como parametros a o apontador para a estrutura e mais duas 
+  variáveis passadas por referência(x e y).  Essa função percorre o labirinto através de fors aninhados,
+  buscando onde o valor 0 esta na matriz. Caso encontrado, temos a alteração dos valores das variáveis 
   x e y, recendo os indices i e j respectivamente. 
+
+• verificaPosicao
+
+• movimenta_estudante
+
+• movimenta_estudante_interno
+
+
   
 • Observações - fazer após terminar o TP
     - Retirar printfs de debug e fazer comentários pertinentes
