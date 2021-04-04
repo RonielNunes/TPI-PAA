@@ -95,8 +95,22 @@
   x e y, recendo os indices i e j respectivamente. 
 
 • verificaPosicao
+  A função verificaPosicao tem como parametros a variável apLabirinto do TipoApontador, linha e coluna 
+  do tipo inteiro. Essa função verifica se uma determinda possição indicada pelos parametros
+  recebidos linha e coluna é valida para o estudante caminhar. Caso o estudante possa cmainha pela 
+  coordenada inficada é retornado o valor de 1, caso contrário 0.
 
+  -Condições para caminho:
+    A coordenada indicada no labirinto ter o valor zero ou valor um. Valor zero indica posição inicial 
+    no labirinto, valor 1 indica posição livre para acesso. 
+    Outra condição verificada como possivel coordenada de movimento é caso a posição indicada ter o valor
+    3 e a quanitdade de chaves ser maior que 0. Valor 3 indica que ali temos uma porta, caso essa condição
+    seja antendida é feito a utilização de chave se o estudante tiver, sendo descatado essa chave
+    (decrementada na quantidade de chaves). 
+  
 • movimenta_estudante
+
+
 
 • movimenta_estudante_interno
 
