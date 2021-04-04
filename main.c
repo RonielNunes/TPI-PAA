@@ -18,6 +18,8 @@ int main(int argc, char const *argv[])
     int escolhaMenu;
     int x, y;
 
+    textcolor(15, 0); /*primeiro cor letra, segundo cor fundo */
+
     do
     {
         limpaTela();

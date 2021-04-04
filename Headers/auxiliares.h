@@ -14,6 +14,7 @@
 
 // ================ declaracao de funcoes ================
 
+void textcolor(int letras, int fundo);
 void linha();
 void textoInicial();
 int escolhaUsuario();

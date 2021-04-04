@@ -31,7 +31,7 @@ void inicializaLabirinto(TipoApontador *apLabirinto, int linha, int coluna, int 
 void mostraLabirinto(TipoApontador *apLabirinto);
 int getPosicaoInicialEstudante(int *x, int *y, TipoApontador *apLabirinto);
 void movimenta_estudante(TipoApontador *apLabirinto);
-int movimenta_estudante_interno(TipoApontador *apLabirinto, int x0, int y0, int *movimentoLinha, int *movimentoColuna);
-int posValida(TipoApontador *apLabirinto, int linha, int coluna);
+int movimenta_estudante_interno(TipoApontador *apLabirinto, int x0, int y0, int *movimentoLinha, int *movimentoColuna, int *qtMovimento, int *qtTentativas, int *posFinal);
+int verificaPosicao(TipoApontador *apLabirinto, int linha, int coluna);
 
 #endif
