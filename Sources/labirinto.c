@@ -35,8 +35,12 @@ void mostraLabirinto(TipoApontador *apLabirinto)
                 textcolor(0, 2); /*primeiro cor letra, segundo cor fundo */
                 printf("  ");
                 textcolor(15, 0); /*primeiro cor letra, segundo cor fundo */
-            }
-            else if ((*apLabirinto)->labirinto[i][j] == 2)
+            }else if((*apLabirinto)->labirinto[i][j] == 0){
+                textcolor(0, 15); /*primeiro cor letra, segundo cor fundo */
+                printf("  ");
+                textcolor(15, 0); /*primeiro cor letra, segundo cor fundo */
+
+            }else if ((*apLabirinto)->labirinto[i][j] == 2)
             {
                 textcolor(0, 1); /*primeiro cor letra, segundo cor fundo */
                 printf("  ");
@@ -121,8 +125,9 @@ int movimenta_estudante_interno(TipoApontador *apLabirinto, int x0, int y0, int 
         if ((*apLabirinto)->labirinto[x0][y0] == 3)
         {
             (*apLabirinto)->labirinto[x0][y0] = 3;
-        }
-        else
+        }else if((*apLabirinto)->labirinto[x0][y0] == 0){
+            (*apLabirinto)->labirinto[x0][y0] = 0;
+        }else
         {
             (*apLabirinto)->labirinto[x0][y0] = 4;
         }

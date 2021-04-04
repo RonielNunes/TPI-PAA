@@ -30,6 +30,7 @@ int main(int argc, char const *argv[])
         case 1:
             limpaTela();
             leituraArquivo(&labirinto);
+            //getPosicaoInicialEstudante(&x,&y,&labirinto);
             break;
 
         case 2:
