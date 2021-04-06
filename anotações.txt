@@ -10,9 +10,10 @@
     esse tipo é a renomeação de um duplo ponteiro para o tipo inteiro. Ela é usada para fazer a alocação
     da matriz, ou seja, essa variável se tornará uma matriz posteriormente.
     - As demais variáveis são do tipo inteiro e sçao elas: qtLinhas, qtColunas e qtChaves.
-    Amazenando a quanitdade de linhas, colunas que formam a matriz e a quantidade de chaves respectivamente.
+    Amazenando a quantidade de linhas, colunas que formam a matriz e a quantidade de chaves respectivamente.
    - A estrutura recebeu o nome de TipoLabirinto, além disso também foi feito nomeação do TipoApontador, que
    é um ponteiro para a estrutura criada.
+   - Toda passagem de parâmetros serão por referência - eliminar cópias e consecutivamente complexidade de espaço
 
 • Menu
     - O menu é executado sempre que a opção escolhida seja != de 0, por meio de um do-while;
@@ -23,12 +24,11 @@
           comando por meio de um switch/case
 
 • Leitura de Arquivo
-    - Retorna uma matriz alocada dinamicamente ou nulo, depende da abertura do arquivo
     - Após o usuario entrar com o nome do arquivo, é concatenada a string "./arquivos/" com o 
       nome digitado pelo usuario e armazenada, a nova string, na variavel "caminhoArquivo";
         - Essa concatenação se deve ao fato dos arquivos estarem em uma pasta separada "arquivos"
     - Após a definição do endereço do arquivo é tentada a leitura. Caso falhe, uma mensagem é
-      mostrada na tela e o programa retorna nulo para o main, caso contrário, prossegue com a 
+      mostrada na tela e o programa retorna para a main, caso contrário, prossegue com a 
       execução;
     - Por meio da função fscanf são armazenados os primeiros parâmetros, separados por espaço, em
       suas respectivas variáveis;
@@ -38,8 +38,6 @@
         - Fazemos o valor dessa posição - '0' para converter para inteiro;
         - Atribuimos esse inteiro para a posição i, j da matriz;
     - Fechamos o arquivo.
-    - Caso a leitura ocorra sem problemas, é retornado o labirinto contido no arquivo;
-      - Labirinto este atribuído para o labirinto declarado na main
 
 • limpaTela
     - Depois de definido o SO, esta função contem um if/else para definir qual comando será usado
@@ -64,7 +62,7 @@
     acrescimo de mais um em seu valor. 
     
     Para a alocação das colunas, temos que somar mais um também por causa da perda citada. Essa alocação
-    utiliza-se de um for para passar por tordas as linhas alocadas e apartir de cada linha é alocado um vetor 
+    utiliza-se de um for para passar por todas as linhas alocadas e apartir de cada linha é alocado um vetor 
     tendo a quantidade de colunas lidas do arquivo.
       
     Resumo apartir do primeiro ponteiro: A alocação é composta de um vetor de ponteiros que corresponde ao 
@@ -76,7 +74,7 @@
   A função mostraLabirinto tem como parametro uma variável do tipo TipoApontador. O objetivo 
   dessa função é mostra o labirinto e os caminho feito pelo estudante para sair do mesmo caso
    possivel. Seu funcionamento se baseia com a utilização de funções auxiliares "textcolor" 
-   para fazer a trasformação dos registros de caminhos no labirinto em algo visualemnte mais 
+   para fazer a trasformação dos registros de caminhos no labirinto em algo visualmente mais 
    atrativo. É utilizado dois for's aninhados para percorrer a matriz que representa o 
    labirinto e com isso é feito a identificação dos compotente do labirinto: posição inicial do estudante;
   caminho feito até encontrar a saída; paredes e portas.
@@ -97,8 +95,8 @@
 • verificaPosicao
   A função verificaPosicao tem como parametros a variável apLabirinto do TipoApontador, linha e coluna 
   do tipo inteiro. Essa função verifica se uma determinda possição indicada pelos parametros
-  recebidos linha e coluna é valida para o estudante caminhar. Caso o estudante possa cmainha pela 
-  coordenada inficada é retornado o valor de 1, caso contrário 0.
+  recebidos linha e coluna é valida para o estudante caminhar. Caso o estudante possa caminhar pela 
+  coordenada definida é retornado o valor de 1, caso contrário 0.
 
   -Condições para caminho:
     A coordenada indicada no labirinto ter o valor zero ou valor um. Valor zero indica posição inicial 
@@ -106,14 +104,43 @@
     Outra condição verificada como possivel coordenada de movimento é caso a posição indicada ter o valor
     3 e a quanitdade de chaves ser maior que 0. Valor 3 indica que ali temos uma porta, caso essa condição
     seja antendida é feito a utilização de chave se o estudante tiver, sendo descatado essa chave
-    (decrementada na quantidade de chaves). 
+    (decrementada na quantidade de chaves).
+
+    - Como especificado no trabalho, o estudante deve recuperar a chave se passar por uma porta e retornar
+      por ela. Para tratar isso, ao retornar nas chamadas recursivas, se a posição for uma porta, há um incremento
+      na quantidade de chaves.
   
 • movimenta_estudante
-
-
+  - contém:
+    - posição inicial (x0, y0);
+    - solução do problema: 1 se existe saída e 0 se não existe;
+    - qtMovimentos
+    - qtTentativas
+    - coluna final - coluna que chegou na primeira linha
+    - movimentos - 2 vetores de 0 e 1, indicando a movimentação do estudante
+      - bem semelhante a ideia do passeio do cavalo visto em auxiliares
+      - ordem da movimentação: cima, direita, esquerda, baixo
+  1º: Inicialmente busca a posição inicial no labirinto por meio da função getPosicaoInicialEstudante;
+  2º: atribui a variável solução a chamada da função movimenta_estudante_interno
+    - se solução = 1: apresenta saída
+    - se solução = 0: não apresenta saída
 
 • movimenta_estudante_interno
-
+  - Função que retorna 1 se a movimentação foi correta e 0 se não for. Como apresenta estrutura recursiva, ao
+  final das chamadas, o resultado será: 1 se possui caminho até a saída e 0 se não possuir saída;
+  - A cada chamada recursiva o parâmetro qtTentativas é incrementado e sempre que a posição for válida para 
+  se movimentar, o parametro qtMovimentos é incrementado também;
+  - Para marcar as posições já caminhadas: fundamento do backtracking, atribuímos 0, no caso da posição ser
+  0 (posição inicial), 3 se for uma porta e 4 se for uma posição válida para caminhar;
+  - verifica a cada chamada se a linha == 0 (primeira linha), caso seja, retorna 1 e salva a coluna chegada,
+  caso contrário executa a chamada recursiva em 1 for
+  - Por que 1 for?
+    - como são 4 possibilidades de movimentos a partir de uma posição, são executadas QT_MOV (4) vezes
+    chamadas recursivas com aquela determinada posição, para assim, tentarmos todas as direções
+    - para podermos incrementar o vetor movimentoLinha e movimentoColuna
+  - após a chamada recursiva, caso a posição seja 3, há um incremento no numero de chaves
+    - isso acontece (e vai acontecer na situação em que) pois ele passou por uma porta, percebeu q nao tinha 
+    saída e voltou pela mesma porta, pegando a chave
 
   
 • Observações - fazer após terminar o TP
