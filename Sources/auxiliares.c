@@ -12,7 +12,8 @@
 // Algoritmo para texto colorido retirado do site: https://www.clubedohardware.com.br/topic/1307510-programa-em-c-ou-c-com-texto-colorido-como-criar-estou-usando-dev-c/
 
 /*             0     1    2     3   4      5      6      7         8  */
-typedef enum{
+typedef enum
+{
     BLACK,
     BLUE,
     GREEN,
@@ -67,7 +68,7 @@ int escolhaUsuario()
 
     puts("Escolha uma das opcoes abaixo:");
     linha();
-    puts("1 - Carregar novo arquivo de dados\n2 - Processar e Exibir resposta\n0 - Finalizar o Programa\n");
+    puts("1 - Carregar novo arquivo de dados\n2 - Processar e Exibir resposta\n1 - Exibir os passos do estudante\n2 - Exibir a quantidade de movimentos\n3 - Exibir o caminho feito até a saida0 - Finalizar o Programa\n");
     linha();
     printf("Sua escolha: ");
     scanf("%d", &escolha);
@@ -75,13 +76,25 @@ int escolhaUsuario()
     return escolha;
 }
 
-void subMenu()
+/*void subMenu()
 {
+    int escolha;
+
+    textoInicial();
+
+    puts("Escolha uma das opcoes:");
+    linha();
+    puts("1 - Exibir os passos do estudante\n2 - Exibir a quantidade de movimentos\n3 - Exibir o caminho feito até a saida\n0 - Sair do Submenu");
+    linha();
+    printf("Sua escolha: ");
+    scanf("%d", &escolha);
+
+    return escolha;
     // opcao 1 - os movimentos executados
     // opcao 2 - quantidade de movimentos
     // opcao 3 - quantidade de tentativas/chamadas recursivas
     // opcao 4 - caminho feito até a saída
-}
+}*/
 
 void leituraArquivo(TipoApontador *apLabirinto)
 {

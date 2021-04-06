@@ -142,6 +142,10 @@
     - isso acontece (e vai acontecer na situação em que) pois ele passou por uma porta, percebeu q nao tinha 
     saída e voltou pela mesma porta, pegando a chave
 
+• textcolor
+
+• modo analise
+
   
 • Observações - fazer após terminar o TP
     - Retirar printfs de debug e fazer comentários pertinentes

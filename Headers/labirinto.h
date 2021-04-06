@@ -12,6 +12,7 @@
 
 #include "includes.h"
 #define QT_MOV 4
+#define ANALISE 0 // 0 - modo normal, 1 - modo análise
 
 typedef int **Labirinto;
 

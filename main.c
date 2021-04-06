@@ -47,13 +47,7 @@ int main(int argc, char const *argv[])
 
         case 3:
 
-            mostraLabirinto(&labirinto); //print da matriz para verificar leitura do arquivo - retirar antes de entregar
-
-            // printf("linhas: %d\ncolunas: %d\nchaves: %d\n", labirinto->qtLinhas, labirinto->qtColunas, labirinto->qtChaves);
-
-            // printf("%d", getPosicaoInicialEstudante(&x, &y, &labirinto));
-
-            // printf("%d", posValida(&labirinto, 9, 5));
+            mostraLabirinto(&labirinto);
 
             system("pause");
             break;
