@@ -46,9 +46,12 @@ int main(int argc, char const *argv[])
             break;
 
         case 3:
+            movimenta_estudante(&labirinto);
+            system("pause");
+            break;
 
+        case 4:
             mostraLabirinto(&labirinto);
-
             system("pause");
             break;
 
