@@ -68,7 +68,7 @@ int escolhaUsuario()
 
     puts("Escolha uma das opcoes abaixo:");
     linha();
-    puts("1 - Carregar novo arquivo de dados\n2 - Processar Labirinto\n3 - Exibir os passos do estudante e a quantidade de movimentos\n4 - Exibir o caminho feito até a saida\n0 - Finalizar o Programa\n");
+    puts("1 - Carregar novo arquivo de dados\n2 - Processar Labirinto\n3 - Exibir os passos do estudante e a quantidade de movimentos\n4 - Exibir o caminho feito ate a saida\n0 - Finalizar o Programa\n");
     linha();
     printf("Sua escolha: ");
     scanf("%d", &escolha);
