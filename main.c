@@ -58,7 +58,6 @@ int main(int argc, char const *argv[])
         case 0:
             limpaTela();
             puts("Obrigado por utilizar!");
-            system("pause");
             break;
 
         default:
