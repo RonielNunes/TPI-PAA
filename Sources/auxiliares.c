@@ -60,7 +60,7 @@ void textoInicial()
     linha();
 }
 
-int escolhaUsuarioMenu()
+int escolhaUsuario()
 {
     int escolha;
 
@@ -68,28 +68,12 @@ int escolhaUsuarioMenu()
 
     puts("Escolha uma das opcoes abaixo:");
     linha();
-    puts("1 - Carregar novo arquivo de dados\n2 - Processar Labirinto\n0 - Finalizar o Programa\n");
+    puts("1 - Carregar novo arquivo de dados\n2 - Processar Labirinto e Exibir Resposta\n3 - Exibir o caminho feito ate a saida\n0 - Finalizar o Programa\n");
     linha();
     printf("Sua escolha: ");
     scanf("%d", &escolha);
 
     return escolha;
-}
-
-int escolhaUsuarioSubMenu()
-{
-    int escolhaSubMenu;
-
-    textoInicial();
-
-    puts("Escolha uma das opcoes:");
-    linha();
-    puts("1 - Exibir os passos do estudante e a quantidade de movimentos finais\n2 - Exibir o caminho feito ate a saida\n0 - Sair do Submenu");
-    linha();
-    printf("Sua escolha: ");
-    scanf("%d", &escolhaSubMenu);
-
-    return escolhaSubMenu;
 }
 
 void leituraArquivo(TipoApontador *apLabirinto)
@@ -111,7 +95,7 @@ void leituraArquivo(TipoApontador *apLabirinto)
     if (arquivo == NULL)
     {
         puts("Erro de abertura!");
-        system("pause");
+        pausaPrograma();
         return;
     }
 
@@ -132,8 +116,6 @@ void leituraArquivo(TipoApontador *apLabirinto)
 
     fclose(arquivo);
 
-    system("pause"); //descomentar essa linha caso descomente as linhas dos prints
-
     return;
 }
 
@@ -143,5 +125,15 @@ void limpaTela()
     system("cls");
 #else
     system("clear");
+#endif
+}
+
+void pausaPrograma()
+{
+#ifdef OS_Windows
+    system("pause");
+#else
+    getchar();
+    getchar();
 #endif
 }

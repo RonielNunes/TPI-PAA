@@ -23,7 +23,7 @@ int main(int argc, char const *argv[])
     do
     {
         limpaTela();
-        escolhaMenu = escolhaUsuarioMenu();
+        escolhaMenu = escolhaUsuario();
 
         switch (escolhaMenu)
         {
@@ -37,44 +37,25 @@ int main(int argc, char const *argv[])
             if (labirinto->labirinto == NULL)
             {
                 puts("Voce precisa entrar com um arquivo valido primeiro!");
-                system("pause");
+                pausaPrograma();
                 break;
             }
-            do
+            movimenta_estudante(&labirinto);
+            pausaPrograma();
+            limpaTela();
+            break;
+
+        case 3:
+            limpaTela();
+            if (labirinto->labirinto == NULL)
             {
-                limpaTela();
-                escolhaSubMenu = escolhaUsuarioSubMenu();
-
-                switch (escolhaSubMenu)
-                {
-                case 1:
-                    movimenta_estudante(&labirinto);
-                    system("pause");
-                    limpaTela();
-                    break;
-
-                case 2:
-                    mostraLabirinto(&labirinto);
-                    system("pause");
-                    limpaTela();
-                    break;
-
-                case 0:
-                    limpaTela();
-                    puts("Retornando ao menu...");
-                    break;
-
-                default:
-                    limpaTela();
-                    puts("Valor invalido! Poderia inserir outro?!");
-                    system("pause");
-                    break;
-                }
-
-                puts(""); // quebra de linha entre uma execucao e outra
-
-            } while (escolhaSubMenu != 0);
-            system("pause");
+                puts("Voce precisa entrar com um arquivo valido primeiro!");
+                pausaPrograma();
+                break;
+            }
+            mostraLabirinto(&labirinto);
+            pausaPrograma();
+            limpaTela();
             break;
 
         case 0:
@@ -85,7 +66,7 @@ int main(int argc, char const *argv[])
         default:
             limpaTela();
             puts("Valor invalido! Poderia inserir outro?!");
-            system("pause");
+            pausaPrograma();
             break;
         }
 
