@@ -17,7 +17,8 @@
 void textcolor(int letras, int fundo);
 void linha();
 void textoInicial();
-int escolhaUsuario();
+int escolhaUsuarioMenu();
+int escolhaUsuarioSubMenu();
 void leituraArquivo(TipoApontador *apLabirinto);
 void limpaTela();
 

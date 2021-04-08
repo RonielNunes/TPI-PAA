@@ -15,7 +15,7 @@ int main(int argc, char const *argv[])
     /* code */
     TipoApontador labirinto;
     labirinto->labirinto = NULL;
-    int escolhaMenu;
+    int escolhaMenu, escolhaSubMenu;
     int x, y;
 
     textcolor(15, 0); /*primeiro cor letra, segundo cor fundo */
@@ -23,14 +23,13 @@ int main(int argc, char const *argv[])
     do
     {
         limpaTela();
-        escolhaMenu = escolhaUsuario();
+        escolhaMenu = escolhaUsuarioMenu();
 
         switch (escolhaMenu)
         {
         case 1:
             limpaTela();
             leituraArquivo(&labirinto);
-            //getPosicaoInicialEstudante(&x,&y,&labirinto);
             break;
 
         case 2:
@@ -41,17 +40,40 @@ int main(int argc, char const *argv[])
                 system("pause");
                 break;
             }
-            movimenta_estudante(&labirinto);
-            system("pause");
-            break;
+            do
+            {
+                limpaTela();
+                escolhaSubMenu = escolhaUsuarioSubMenu();
 
-        case 3:
-            movimenta_estudante(&labirinto);
-            system("pause");
-            break;
+                switch (escolhaSubMenu)
+                {
+                case 1:
+                    movimenta_estudante(&labirinto);
+                    system("pause");
+                    limpaTela();
+                    break;
 
-        case 4:
-            mostraLabirinto(&labirinto);
+                case 2:
+                    mostraLabirinto(&labirinto);
+                    system("pause");
+                    limpaTela();
+                    break;
+
+                case 0:
+                    limpaTela();
+                    puts("Retornando ao menu...");
+                    break;
+
+                default:
+                    limpaTela();
+                    puts("Valor invalido! Poderia inserir outro?!");
+                    system("pause");
+                    break;
+                }
+
+                puts(""); // quebra de linha entre uma execucao e outra
+
+            } while (escolhaSubMenu != 0);
             system("pause");
             break;
 

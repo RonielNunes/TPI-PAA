@@ -60,7 +60,7 @@ void textoInicial()
     linha();
 }
 
-int escolhaUsuario()
+int escolhaUsuarioMenu()
 {
     int escolha;
 
@@ -68,7 +68,7 @@ int escolhaUsuario()
 
     puts("Escolha uma das opcoes abaixo:");
     linha();
-    puts("1 - Carregar novo arquivo de dados\n2 - Processar Labirinto\n3 - Exibir os passos do estudante e a quantidade de movimentos\n4 - Exibir o caminho feito ate a saida\n0 - Finalizar o Programa\n");
+    puts("1 - Carregar novo arquivo de dados\n2 - Processar Labirinto\n0 - Finalizar o Programa\n");
     linha();
     printf("Sua escolha: ");
     scanf("%d", &escolha);
@@ -76,25 +76,21 @@ int escolhaUsuario()
     return escolha;
 }
 
-/*void subMenu()
+int escolhaUsuarioSubMenu()
 {
-    int escolha;
+    int escolhaSubMenu;
 
     textoInicial();
 
     puts("Escolha uma das opcoes:");
     linha();
-    puts("1 - Exibir os passos do estudante\n2 - Exibir a quantidade de movimentos\n3 - Exibir o caminho feito até a saida\n0 - Sair do Submenu");
+    puts("1 - Exibir os passos do estudante e a quantidade de movimentos finais\n2 - Exibir o caminho feito ate a saida\n0 - Sair do Submenu");
     linha();
     printf("Sua escolha: ");
-    scanf("%d", &escolha);
+    scanf("%d", &escolhaSubMenu);
 
-    return escolha;
-    // opcao 1 - os movimentos executados
-    // opcao 2 - quantidade de movimentos
-    // opcao 3 - quantidade de tentativas/chamadas recursivas
-    // opcao 4 - caminho feito até a saída
-}*/
+    return escolhaSubMenu;
+}
 
 void leituraArquivo(TipoApontador *apLabirinto)
 {

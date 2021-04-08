@@ -9,7 +9,6 @@
 
 void inicializaLabirinto(TipoApontador *apLabirinto, int linha, int coluna, int chave)
 {
-
     (*apLabirinto)->qtLinhas = linha;
     (*apLabirinto)->qtColunas = coluna;
     (*apLabirinto)->qtChaves = chave;
@@ -100,7 +99,7 @@ void movimenta_estudante(TipoApontador *apLabirinto)
         puts("O estudante nao esta no labirinto!");
         return;
     }
-    solucao = movimenta_estudante_interno(&(*apLabirinto), x0, y0, movimentoLinha, movimentoColuna, &qtMovimento, &qtTentativas,&AuxNivelRecursao,&nivelRecursao, &posFinal);
+    solucao = movimenta_estudante_interno(&(*apLabirinto), x0, y0, movimentoLinha, movimentoColuna, &qtMovimento, &qtTentativas, &AuxNivelRecursao, &nivelRecursao, &posFinal);
 
     if (!solucao)
     {
@@ -114,15 +113,15 @@ void movimenta_estudante(TipoApontador *apLabirinto)
         printf("O estudante se movimentou %d vezes e chegou na coluna %d da primeira linha\n", qtMovimento, posFinal);
 
         if (ANALISE)
-            printf("Quantidade de chamadas recursivas: %d.\nNivel maximo: %d\n", qtTentativas,nivelRecursao);
+            printf("Quantidade de chamadas recursivas: %d.\nNivel maximo: %d\n", qtTentativas, nivelRecursao);
     }
     return;
 }
 
-int movimenta_estudante_interno(TipoApontador *apLabirinto, int x0, int y0, int *movimentoLinha, int *movimentoColuna, int *qtMovimento, int *qtTentativas, int *AuxNivelRecursao,int *nivelRecursao, int *posFinal)
+int movimenta_estudante_interno(TipoApontador *apLabirinto, int x0, int y0, int *movimentoLinha, int *movimentoColuna, int *qtMovimento, int *qtTentativas, int *AuxNivelRecursao, int *nivelRecursao, int *posFinal)
 {
     //sleep(2);
-    int registroTentativa = 0; 
+    int registroTentativa = 0;
     int aux;
 
     (*qtTentativas)++;
@@ -154,8 +153,9 @@ int movimenta_estudante_interno(TipoApontador *apLabirinto, int x0, int y0, int 
             return registroTentativa;
         }
         else
+        {
+            for (int i = 0; i < QT_MOV; i++)
             {
-            for (int i = 0; i < QT_MOV; i++){
                 if (!registroTentativa)
                 {
                     registroTentativa = movimenta_estudante_interno(&(*apLabirinto),
@@ -168,18 +168,16 @@ int movimenta_estudante_interno(TipoApontador *apLabirinto, int x0, int y0, int 
                                                                     AuxNivelRecursao,
                                                                     nivelRecursao,
                                                                     posFinal);
-
                 }
             }
             if ((*apLabirinto)->labirinto[x0][y0] == 3)
             {
                 (*apLabirinto)->qtChaves++;
-
             }
         }
-    (*AuxNivelRecursao)--;
+        (*AuxNivelRecursao)--;
     }
-    
+
     return registroTentativa;
 }
 
