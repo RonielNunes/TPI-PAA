@@ -7,6 +7,8 @@
 
 #include "../Headers/includes.h"
 
+int nivelRecursaoGlobal = 0;
+
 void inicializaLabirinto(TipoApontador *apLabirinto, int linha, int coluna, int chave)
 {
     (*apLabirinto)->qtLinhas = linha;
@@ -88,7 +90,7 @@ int getPosicaoInicialEstudante(int *x, int *y, TipoApontador *apLabirinto)
 void movimenta_estudante(TipoApontador *apLabirinto)
 {
     // posicoes iniciais
-    int x0, y0, solucao, qtMovimento = 0, qtTentativas = 0, posFinal, AuxNivelRecursao = 0, nivelRecursao;
+    int x0, y0, solucao, qtMovimento = 0, qtTentativas = 0, posFinal, nivelRecursao = 0;
 
     // possiveis movimentos - cima, direita, esquerda, baixo
     int movimentoLinha[QT_MOV] = {-1, 0, 0, 1};
@@ -99,37 +101,38 @@ void movimenta_estudante(TipoApontador *apLabirinto)
         puts("O estudante nao esta no labirinto!");
         return;
     }
-    solucao = movimenta_estudante_interno(&(*apLabirinto), x0, y0, movimentoLinha, movimentoColuna, &qtMovimento, &qtTentativas, &AuxNivelRecursao, &nivelRecursao, &posFinal);
+    solucao = movimenta_estudante_interno(&(*apLabirinto), x0, y0, movimentoLinha, movimentoColuna, &qtMovimento, &qtTentativas, &nivelRecursao, &posFinal);
 
     if (!solucao)
     {
         printf("O estudante se movimentou %d vezes e percebeu que o labirinto nao tem saida.\n", qtMovimento);
-
-        if (ANALISE)
-            printf("Quantidade de chamadas recursivas: %d.\nNivel maximo: %d\n", qtTentativas, nivelRecursao);
+        if (ANALISE){
+            printf("Quantidade de chamadas recursivas: %d.\nNivel maximo: %d\n", qtTentativas,nivelRecursaoGlobal);
+            nivelRecursaoGlobal = 0;
+        }
     }
     else
     {
         printf("O estudante se movimentou %d vezes e chegou na coluna %d da primeira linha\n", qtMovimento, posFinal);
-
-        if (ANALISE)
-            printf("Quantidade de chamadas recursivas: %d.\nNivel maximo: %d\n", qtTentativas, nivelRecursao);
+        if (ANALISE){
+            printf("Quantidade de chamadas recursivas: %d.\nNivel maximo: %d\n", qtTentativas,nivelRecursaoGlobal);
+            nivelRecursaoGlobal = 0;
+        }
     }
     return;
 }
 
-int movimenta_estudante_interno(TipoApontador *apLabirinto, int x0, int y0, int *movimentoLinha, int *movimentoColuna, int *qtMovimento, int *qtTentativas, int *AuxNivelRecursao, int *nivelRecursao, int *posFinal)
+int movimenta_estudante_interno(TipoApontador *apLabirinto, int x0, int y0, int *movimentoLinha, int *movimentoColuna, int *qtMovimento, int *qtTentativas, int *nivelRecursao, int *posFinal)
 {
     //sleep(2);
     int registroTentativa = 0;
-    int aux;
 
     (*qtTentativas)++;
 
     if (verificaPosicao(&(*apLabirinto), x0, y0))
     {
         (*qtMovimento)++;
-        (*AuxNivelRecursao)++;
+        (*nivelRecursao)++;
         if ((*apLabirinto)->labirinto[x0][y0] == 3)
         {
             (*apLabirinto)->labirinto[x0][y0] = 3;
@@ -144,9 +147,16 @@ int movimenta_estudante_interno(TipoApontador *apLabirinto, int x0, int y0, int 
         }
 
         printf("Linha: %d Coluna: %d\n", x0, y0);
+
+
+        //FAZER A COMPARAÇÃO AQUI 
+        if((*nivelRecursao) > nivelRecursaoGlobal){
+            //nivelRecursaoGlobal++;
+            nivelRecursaoGlobal = (*nivelRecursao);
+        }
+
         if (x0 == 0)
         {
-            (*nivelRecursao) = (*AuxNivelRecursao);
             *posFinal = y0;
             registroTentativa = 1;
 
@@ -165,7 +175,6 @@ int movimenta_estudante_interno(TipoApontador *apLabirinto, int x0, int y0, int 
                                                                     movimentoColuna,
                                                                     qtMovimento,
                                                                     qtTentativas,
-                                                                    AuxNivelRecursao,
                                                                     nivelRecursao,
                                                                     posFinal);
                 }
@@ -175,7 +184,7 @@ int movimenta_estudante_interno(TipoApontador *apLabirinto, int x0, int y0, int 
                 (*apLabirinto)->qtChaves++;
             }
         }
-        (*AuxNivelRecursao)--;
+        (*nivelRecursao)--;
     }
 
     return registroTentativa;
