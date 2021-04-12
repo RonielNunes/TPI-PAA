@@ -80,7 +80,7 @@ void leituraArquivo(TipoApontador *apLabirinto)
 {
     int i, j, linha, coluna, chave;
 
-    char nomeArquivo[20], caminhoArquivo[20];
+    char nomeArquivo[20], caminhoArquivo[40] = "./arquivos/";
 
     FILE *arquivo;
 
@@ -88,7 +88,7 @@ void leituraArquivo(TipoApontador *apLabirinto)
 
     scanf("%s", nomeArquivo);
 
-    sprintf(caminhoArquivo, "./arquivos/%s", nomeArquivo); // funcao que compoe uma string, armazena no 1º parametro o 2º concatenado com o 3º
+    strcat(caminhoArquivo, nomeArquivo);
 
     arquivo = fopen(caminhoArquivo, "r");
 
@@ -133,6 +133,7 @@ void pausaPrograma()
 #ifdef OS_Windows
     system("pause");
 #else
+    puts("Pressione qualquer tecla para continuar. . .");
     getchar();
     getchar();
 #endif

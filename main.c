@@ -7,9 +7,6 @@
 
 #include "./Headers/includes.h"
 
-//gcc -o exec main.c ./Sources/labirinto.c ./Sources/auxiliares.c
-//Como rodar o makefile no windows mingw32-make <enter>  exec <enter>
-
 int main(int argc, char const *argv[])
 {
     /* code */

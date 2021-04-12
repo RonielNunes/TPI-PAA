@@ -82,8 +82,6 @@ int getPosicaoInicialEstudante(int *x, int *y, TipoApontador *apLabirinto)
         }
     }
 
-    //printf("i: %d, j: %d", *x, *y);
-
     return 0;
 }
 
@@ -108,7 +106,7 @@ void movimenta_estudante(TipoApontador *apLabirinto)
         printf("O estudante se movimentou %d vezes e percebeu que o labirinto nao tem saida.\n", qtMovimento);
         if (ANALISE){
             printf("Quantidade de chamadas recursivas: %d.\nNivel maximo: %d\n", qtTentativas,nivelRecursaoGlobal);
-            nivelRecursaoGlobal = 0;
+            nivelRecursaoGlobal = 0;    // zerando a variavel global para nao influenciar nas proximas execucoes
         }
     }
     else
@@ -116,7 +114,7 @@ void movimenta_estudante(TipoApontador *apLabirinto)
         printf("O estudante se movimentou %d vezes e chegou na coluna %d da primeira linha\n", qtMovimento, posFinal);
         if (ANALISE){
             printf("Quantidade de chamadas recursivas: %d.\nNivel maximo: %d\n", qtTentativas,nivelRecursaoGlobal);
-            nivelRecursaoGlobal = 0;
+            nivelRecursaoGlobal = 0;    // zerando a variavel global para nao influenciar nas proximas execucoes
         }
     }
     return;
@@ -124,7 +122,6 @@ void movimenta_estudante(TipoApontador *apLabirinto)
 
 int movimenta_estudante_interno(TipoApontador *apLabirinto, int x0, int y0, int *movimentoLinha, int *movimentoColuna, int *qtMovimento, int *qtTentativas, int *nivelRecursao, int *posFinal)
 {
-    //sleep(2);
     int registroTentativa = 0;
 
     (*qtTentativas)++;
@@ -146,12 +143,9 @@ int movimenta_estudante_interno(TipoApontador *apLabirinto, int x0, int y0, int 
             (*apLabirinto)->labirinto[x0][y0] = 4;
         }
 
-        printf("Linha: %d Coluna: %d\n", x0, y0);
+        printf("Linha: %d Coluna: %d\n", x0, y0);   //trajeto
 
-
-        //FAZER A COMPARAÇÃO AQUI 
         if((*nivelRecursao) > nivelRecursaoGlobal){
-            //nivelRecursaoGlobal++;
             nivelRecursaoGlobal = (*nivelRecursao);
         }
 
